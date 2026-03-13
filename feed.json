@@ -10,6 +10,36 @@
     },
     "items": [
         {
+            "id": "https://ripponyun.github.io/yi-ge-zhi-de-shou-cang-de-wang-zhan.html",
+            "url": "https://ripponyun.github.io/yi-ge-zhi-de-shou-cang-de-wang-zhan.html",
+            "title": "一个值得收藏的网站",
+            "summary": "奇迹秀 奇迹秀 - 因设计·而美丽 地址：奇迹秀 - 因设计·而美丽 一款高颜值的资源网站，网站设计十分美观简洁，提供字体，设计软件（不限于还有很多效率，AI软件，插件等），美化资源等，建议收藏。",
+            "content_html": "<p>奇迹秀             奇迹秀 - 因设计·而美丽         地址：<a href=\"https://www.qijishow.com/\">奇迹秀 - 因设计·而美丽</a></p>\n<p>一款高颜值的资源网站，网站设计十分美观简洁，提供字体，设计软件（不限于还有很多效率，AI软件，插件等），美化资源等，建议收藏。<br><br></p>",
+            "author": {
+                "name": "Rippon Gao"
+            },
+            "tags": [
+                   "资源网站"
+            ],
+            "date_published": "2025-09-13T11:33:00+08:00",
+            "date_modified": "2026-03-13T11:36:03+08:00"
+        },
+        {
+            "id": "https://ripponyun.github.io/xi-tong-zhong-chang-jian-de-ri-zhi-wen-jian.html",
+            "url": "https://ripponyun.github.io/xi-tong-zhong-chang-jian-de-ri-zhi-wen-jian.html",
+            "title": " 系统中常见的日志文件 ",
+            "summary": "日志文件 说 明 /var/log/cron 记录了系统定时任务相关的日志。 /var/log/cups/ 记录打印CPU信息的日志 /var/log/dmesg 记录了系统在开机时内核自检的信息。也可以使用 dmesg 命令直接查看内核自检信息。 /var/log/btmp 记录错误登录的日志。这个文件是二进制文件，不能直接 vi 查看，而要使用 lastb 命令查看 /var/log/lastlog 记录系统中所有用户最后一次的登录时间的日志。这个文件也是二进制文件，不能直接 vi，而要使用&hellip;",
+            "content_html": "<div data-page-id=\"AUoTdNTvnoCYdHx9gKdc6XWqnAh\" data-lark-html-role=\"root\" data-docx-has-block-data=\"true\">\n<div>\n<table class=\"ace-table\" style=\"width: 100%; height: 854.52px;\" data-ace-table-col-widths=\"177;643\"><colgroup> <col style=\"width: 25.2137%;\" width=\"177\"> <col style=\"width: 91.5954%;\" width=\"643\"> </colgroup>\n<tbody>\n<tr style=\"height: 48.2292px;\">\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnA74277CLPJ1gsstHyRhJLf\">日志文件</div>\n</td>\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnfbDcY2ZMKZOast8ZzBFj3b\">说 明</div>\n</td>\n</tr>\n<tr style=\"height: 48.2292px;\">\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcncJqRgovCAm7GSVkAvi6NCc\">/var/log/cron</div>\n</td>\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnRKHwZiUoopwcXgXENVg5Hh\">记录了系统定时任务相关的日志。</div>\n</td>\n</tr>\n<tr style=\"height: 48.2292px;\">\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnmbsAl82vChGmrFy7ec3yof\">/var/log/cups/</div>\n</td>\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnGyRaoz6yE9H0DJwGIgeeVJ\">记录打印CPU信息的日志</div>\n</td>\n</tr>\n<tr style=\"height: 75.2292px;\">\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnZD3Bvqph3odahrbsnpn8Tf\">/var/log/dmesg</div>\n</td>\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnOy6bnScBeYYwF24OaDqC5e\">记录了系统在开机时内核自检的信息。也可以使用 dmesg 命令直接查看内核自检信息。</div>\n</td>\n</tr>\n<tr style=\"height: 75.2292px;\">\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnbJdcSyQLflefCCmXGq3WIc\">/var/log/btmp</div>\n</td>\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcn495UQzBTmDXFDADjZEdGnG\">记录错误登录的日志。这个文件是二进制文件，不能直接 vi 查看，而要使用 lastb 命令查看</div>\n</td>\n</tr>\n<tr style=\"height: 75.2292px;\">\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcneOHdEv1E9KJPO325gsl9Qd\">/var/log/lastlog</div>\n<div class=\"ace-line ace-line old-record-id-BVV2d68NaoWikwxyLQIcK43hnmd\"> </div>\n</td>\n<td style=\"height: 75.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnZu1ImevnI5nTUBvxuPecNe\">记录系统中所有用户最后一次的登录时间的日志。这个文件也是二进制文件，不能直接 vi，而要使用 lastlog 命令查看。</div>\n</td>\n</tr>\n<tr style=\"height: 48.2292px;\">\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcn5savskPNNxTaCcVZC8Me5J\">/var/log/mailog</div>\n</td>\n<td style=\"height: 48.2292px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcn0Pa9zjBixJyrfh4frlPZSe\">记录邮件信息。</div>\n</td>\n</tr>\n<tr style=\"height: 102.229px;\">\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnTZLo9jbyViL8KJ5gHO88ab\">/var/log/message</div>\n</td>\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnT9DcRpeiPutUQbzh2zRTqX\">记录系统重要信息的日志。这个日志文件中会记录 Linux 系统的绝大多数重要信息，如果系统出现问题时，首先要检查的就应该是这个日志文件。</div>\n</td>\n</tr>\n<tr style=\"height: 129.229px;\">\n<td style=\"height: 129.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnwtcc9e8QkywsfWmLMgvoSb\">/var/log/secure</div>\n</td>\n<td style=\"height: 129.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnkwufJBGBvYZ9j0CTvibnFc\">记录验证和授权方面的信息，只要涉及账户和密码的程序都会记录。比如说系统的登录，ssh 的登录，su 切换用户，sudo 授权，甚至添加用户和修改用户密码都会记录在这个日志文件中。</div>\n</td>\n</tr>\n<tr style=\"height: 102.229px;\">\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnICT2ucVTFJzgFo7grShRWf\">/var/log/wtmp</div>\n<div class=\"ace-line ace-line old-record-id-doxcndH1AElgiKWJy31NrfUqBHf\"> </div>\n</td>\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnEtoM8wmEyUzneMXx6QR55c\">永久记录所有用户的登录、注销信息，同时记录系统的启动、重启、关机事件。同样这个文件也是一个二进制文件，不能直接 vi，而需要使用 last 命令来查看。</div>\n</td>\n</tr>\n<tr style=\"height: 102.229px;\">\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcni0R3s7Kim0V8e2ziqRdRwe\">/var/run/utmp</div>\n<div class=\"ace-line ace-line old-record-id-doxcnD0V1hZU2JxFa8PLb5g0nHh\"> </div>\n</td>\n<td style=\"height: 102.229px;\" colspan=\"1\" rowspan=\"1\">\n<div class=\"ace-line ace-line old-record-id-doxcnyOArKgomi2ZYReSPtFWx8e\">记录当前已经登录的用户的信息。这个文件会随着用户的登录和注销而不断变化，只记录当前登录用户的信息。同样这个文件不能直接vi，而要使用 w，who，users 等命令来查询。</div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>",
+            "author": {
+                "name": "Rippon Gao"
+            },
+            "tags": [
+                   "文章"
+            ],
+            "date_published": "2025-07-13T11:19:00+08:00",
+            "date_modified": "2026-03-13T11:20:20+08:00"
+        },
+        {
             "id": "https://ripponyun.github.io/the-microphones-the-glow-pt-2.html",
             "url": "https://ripponyun.github.io/the-microphones-the-glow-pt-2.html",
             "title": "The Microphones – &quot;The Glow&quot; Pt. 2",
@@ -21,8 +51,8 @@
             "tags": [
                    "音乐"
             ],
-            "date_published": "2026-03-12T18:12:24+08:00",
-            "date_modified": "2026-03-12T21:09:55+08:00"
+            "date_published": "2025-05-17T18:12:00+08:00",
+            "date_modified": "2026-03-13T11:10:22+08:00"
         }
     ]
 }
