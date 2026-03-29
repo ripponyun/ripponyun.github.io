@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Centos Stream 9 MySQL8安装与配置 - Rippon&amp;小屋</title><meta name="description" content="本次采用二进制安装： 前置准备： IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口） 官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可 Shell脚本： #!/bin/bash #1.安装依赖软件 echo '正在安装依赖软件...'&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><meta name="theme-color" content="#17181E" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#D73A42" media="(prefers-color-scheme: light)"><meta name="msapplication-navbutton-color" content="#D73A42"><meta name="apple-mobile-web-app-status-bar-style" content="#D73A42"><link rel="canonical" href="https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html"><link rel="alternate" type="application/atom+xml" href="https://ripponyun.github.io/feed.xml" title="Rippon&amp;小屋 - RSS"><link rel="alternate" type="application/json" href="https://ripponyun.github.io/feed.json" title="Rippon&amp;小屋 - JSON"><meta property="og:title" content="Centos Stream 9 MySQL8安装与配置"><meta property="og:site_name" content="Rippon&小屋"><meta property="og:description" content="本次采用二进制安装： 前置准备： IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口） 官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可 Shell脚本： #!/bin/bash #1.安装依赖软件 echo '正在安装依赖软件...'&hellip;"><meta property="og:url" content="https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://ripponyun.github.io/media/website/1.png" type="image/x-icon"><link rel="stylesheet" href="https://ripponyun.github.io/assets/css/style.css?v=ea2b6619bc9d54c80ba5f19344dfb433"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html"},"headline":"Centos Stream 9 MySQL8安装与配置","datePublished":"2025-10-28T17:36+08:00","dateModified":"2026-03-29T17:36+08:00","description":"本次采用二进制安装： 前置准备： IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口） 官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可 Shell脚本： #!/bin/bash #1.安装依赖软件 echo '正在安装依赖软件...'&hellip;","author":{"@type":"Person","name":"Rippon Gao","url":"https://ripponyun.github.io/authors/rippon-gao/"},"publisher":{"@type":"Organization","name":"Rippon Gao"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><header class="top js-header"><a class="logo" href="https://ripponyun.github.io/">Rippon&amp;小屋</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://ripponyun.github.io/" title="home" target="_self">首页</a></li><li><a href="https://ripponyun.github.io/tags/wen-zhang/" title="article" target="_self">文章</a></li><li><a href="https://ripponyun.github.io/tags/yin-le/" title="music" target="_self">音乐</a></li><li><a href="https://ripponyun.github.io/tags/ruan-jian/" title="information" target="_self">宝藏屋</a></li><li><a href="https://ripponyun.github.io/bi-zhi-2.html" title="wallpaper" target="_self">壁纸</a></li></ul></nav></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>Centos Stream 9 MySQL8安装与配置</h1><div class="feed__meta content__meta"><a href="https://ripponyun.github.io/authors/rippon-gao/" class="feed__author">Rippon Gao</a> <time datetime="2025-10-28T17:36" class="feed__date">十月 28, 2025</time></div></div></header></div><div class="entry-wrapper content__entry"><p>本次采用二进制安装：<br>前置准备：<br>IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口）<br><br>官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可<br>Shell脚本：</p><pre class="line-numbers language-powershell"><code>#!/bin/bash
+#1.安装依赖软件
+echo "正在安装依赖软件..."
+yum -y install libaio &&gt; /dev/null
+if [ $? -ne 0 ];then
+    echo "libaio安装失败"
+    exit 1
+fi
+#2.判断是否有压缩包，如果有，则执行解压缩操作
+echo "正在判断是否有压缩包，如果有进行解压缩操作..."
+echo "正在判断是否有压缩包，如果有进行解压缩操作..."
+if [ -f mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz ]; then     #具体以下载的包名为准进行替换
+    tar -xf mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz
+    ls -l mysql-8.0.40-linux-glibc2.17-x86_64
+fi
+#3.判断系统中是否安装过mariadb软件，如果有对其进行卸载操作
+echo "正在判断系统中是否安装过mariadb软件，如果有对其进行卸载操作..."
+rpm -qa | grep mariadb | xargs -r dnf remove -y
+[ -f /etc/my.cnf ] && rm -rf /etc/my.cnf
+#4.创建mysql系统账号
+id mysql &&gt; /dev/null
+[ $? -ne 0 ] && useradd -r -s /sbin/nologin mysql
+#5.创建/export/server目录，然后移动mysql压缩包解压后的文件到/export/server目录下
+rm -rf /export/server
+mkdir -p /export/server
+mv mysql-8.0.40-linux-glibc2.17-x86_64 /export/server/mysql
+#6.进入mysql目录，对其进行初始化操作
+echo "正在进入mysql目录，对其进行初始化操作..."
+cd /export/server/mysql
+bin/mysqld --initialize --user=mysql --basedir=/export/server/mysql --datadir=/export/server/mysql/data 2&gt;&1 | tee /tmp/mysqld.log | grep password | awk '{print $NF}' &gt; /tmp/mysql_temp_password.txt
+#7.设置ssl加密传输连接
+bin/mysql_ssl_rsa_setup --datadir=/export/server/mysql/data &&gt; /dev/null
+#8.设置my.cnf与mysqld.service文件
+echo "正在设置my.cnf与mysqld.service文件..."
+cat &gt; /etc/my.cnf &lt;&lt;EOF
+[mysqld]
+port=3306
+basedir=/export/server/mysql
+datadir=/export/server/mysql/data
+socket=/tmp/mysql.sock
+character_set_server=utf8
+collation-server=utf8_unicode_ci
+EOF
+
+cat &gt; /etc/systemd/system/mysqld.service &lt;&lt;EOF
+[Unit]
+Description=MySQL Server
+After=network.target
+
+[Service]
+User=mysql
+Group=mysql
+Type=forking
+
+# MySQL 执行命令及路径
+ExecStart=/export/server/mysql/bin/mysqld --daemonize --pid-file=/export/server/mysql/data/mysqld.pid
+ExecStop=/export/server/mysql/bin/mysqladmin --defaults-file=/export/server/mysql/my.cnf shutdown
+
+# Ensure MySQL has sufficient time to start up
+TimeoutSec=600
+
+# PID 文件路径
+PIDFile=/export/server/mysql/data/mysqld.pid
+
+# Enable these options to auto-restart the service if it crashes
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+#9.刷新后台服务，然后启动mysqld
+echo "正在刷新后台服务，然后启动mysqld..."
+systemctl daemon-reload
+systemctl start mysqld
+systemctl enable mysqld
+#10.重置mysql管理员密码为123456
+echo "正在重置mysql管理员密码..."
+cd /export/server/mysql
+temp_password=`cat /tmp/mysql_temp_password.txt`
+bin/mysqladmin -uroot password '123456' -p$temp_password
+#11.把mysql的bin目录添加到环境变量中
+echo 'export PATH=$PATH:/export/server/mysql/bin' &gt;&gt; /etc/profile
+source /etc/profile
+#12.解决mysql客户端首次无法登录问题
+[ ! -f /lib64/libncurses.so.5 ] && ln -s /lib64/libncurses.so.6 /lib64/libncurses.so.5
+[ ! -f /lib64/libtinfo.so.5 ] && ln -s /lib64/libtinfo.so.6 /lib64/libtinfo.so.5
+#13.弹出提示，MySQL安装成功
+echo "MySQL安装成功，软件安装路径：/export/server/mysql，数据库初始密码：123456！"</code></pre></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on 三月 29, 2026</p><div class="content__actions"><ul class="content__tag"><li><a href="https://ripponyun.github.io/tags/wen-zhang/">文章</a></li></ul><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fripponyun.github.io%2Fcentos-stream-9-mysql8an-zhuang-yu-pei-zhi.html" class="js-share facebook" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fripponyun.github.io%2Fcentos-stream-9-mysql8an-zhuang-yu-pei-zhi.html&amp;media=undefined&amp;description=Centos%20Stream%209%20MySQL8%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE" class="js-share pinterest" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#pinterest"/></svg> <span>Pinterest</span> </a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fripponyun.github.io%2Fcentos-stream-9-mysql8an-zhuang-yu-pei-zhi.html" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span> </a><a href="https://api.whatsapp.com/send?text=Centos%20Stream%209%20MySQL8%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE https%3A%2F%2Fripponyun.github.io%2Fcentos-stream-9-mysql8an-zhuang-yu-pei-zhi.html" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://ripponyun.github.io/authors/rippon-gao/" rel="author">Rippon Gao</a></h3></div></div></div><nav class="content__nav"><div class="wrapper"><div class="content__nav-inner"><div class="content__nav-prev"><a href="https://ripponyun.github.io/wiresharkzhua-bao-xin-shou-shi-yong-jiao-cheng.html" class="content__nav-link" rel="prev"><div><span>Previous</span> wireshark抓包新手使用教程</div></a></div><div class="content__nav-next"><a href="https://ripponyun.github.io/wise-care-365-pro-735722-zhuan-ye-ban-shi-jie-shang-zui-kuai-de-xi-tong-you-hua-ruan-jian.html" class="content__nav-link" rel="next"><div><span>Next</span> Wise Care 365 Pro 7.3.5.722 专业版 世界上最快的系统优化软件</div></a></div></div></div></nav></footer></article></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>Powered by Publii CMS</p></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://ripponyun.github.io/assets/js/scripts.min.js?v=dafec4f87fead6718cb125f0b0fc8441"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script>(function() {
+			var originalTitle = document.title;
+			var timeout;
+			document.addEventListener("visibilitychange", function() {
+				if (document.hidden) {
+					document.title = "👀 We miss you! Come back!";
+				} else {
+					clearTimeout(timeout);
+					document.title = "🎉 Welcome back!";
+							setTimeout(function() {
+								document.title = originalTitle;
+							}, 2000);
+				}
+			});
+		})();</script></body></html>

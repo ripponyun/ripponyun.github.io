@@ -3,7 +3,7 @@
     <title>Rippon&amp;小屋</title>
     <link href="https://ripponyun.github.io/feed.xml" rel="self" />
     <link href="https://ripponyun.github.io" />
-    <updated>2026-03-14T16:35:47+08:00</updated>
+    <updated>2026-03-29T17:36:41+08:00</updated>
     <author>
         <name>Rippon Gao</name>
     </author>
@@ -36,6 +36,123 @@
 <p>系统监视：时时监控查看系统进程，并进行查看关闭等管理操作。支持查看电脑CPU、主板、显卡、内存、硬盘等硬件信息。</p>
 <p>快捷小工具：提供进程监视、系统瘦身、启动项管理、清理注册表、密码生成器、文件粉碎、硬盘擦除、右键菜单管理等快捷免费小工具入口。<span style="font-size: inherit;">如果觉得资源不错，欢迎任意金额打赏支持</span></p>
 <p>地址：<a href="https://pan.baidu.com/s/1JxQyT-ir-_ZAK9WOoeL-eg?pwd=qiji#list/path=%2F&amp;parentPath=%2Fsharelink1099974491622-668637256005551">WiseCare365_免费高速下载|百度网盘-分享无限制</a></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Centos Stream 9 MySQL8安装与配置</title>
+        <author>
+            <name>Rippon Gao</name>
+        </author>
+        <link href="https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html"/>
+        <id>https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html</id>
+            <category term="文章"/>
+
+        <updated>2025-10-28T17:36:00+08:00</updated>
+            <summary type="html">
+                <![CDATA[
+                    本次采用二进制安装： 前置准备： IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口） 官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可 Shell脚本： #!/bin/bash #1.安装依赖软件 echo "正在安装依赖软件..."&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                
+  <p>
+    本次采用二进制安装：
+<br>前置准备：
+<br>IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口）
+<br>
+<br>官网下载地址：https://dev.mysql.com/downloads/mysql/  选择合适的，下载后上传至家目录即可<br>Shell脚本：
+  </p>
+<pre class="line-numbers  language-powershell"><code>#!/bin/bash
+#1.安装依赖软件
+echo "正在安装依赖软件..."
+yum -y install libaio &&gt; /dev/null
+if [ $? -ne 0 ];then
+    echo "libaio安装失败"
+    exit 1
+fi
+#2.判断是否有压缩包，如果有，则执行解压缩操作
+echo "正在判断是否有压缩包，如果有进行解压缩操作..."
+echo "正在判断是否有压缩包，如果有进行解压缩操作..."
+if [ -f mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz ]; then     #具体以下载的包名为准进行替换
+    tar -xf mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz
+    ls -l mysql-8.0.40-linux-glibc2.17-x86_64
+fi
+#3.判断系统中是否安装过mariadb软件，如果有对其进行卸载操作
+echo "正在判断系统中是否安装过mariadb软件，如果有对其进行卸载操作..."
+rpm -qa | grep mariadb | xargs -r dnf remove -y
+[ -f /etc/my.cnf ] && rm -rf /etc/my.cnf
+#4.创建mysql系统账号
+id mysql &&gt; /dev/null
+[ $? -ne 0 ] && useradd -r -s /sbin/nologin mysql
+#5.创建/export/server目录，然后移动mysql压缩包解压后的文件到/export/server目录下
+rm -rf /export/server
+mkdir -p /export/server
+mv mysql-8.0.40-linux-glibc2.17-x86_64 /export/server/mysql
+#6.进入mysql目录，对其进行初始化操作
+echo "正在进入mysql目录，对其进行初始化操作..."
+cd /export/server/mysql
+bin/mysqld --initialize --user=mysql --basedir=/export/server/mysql --datadir=/export/server/mysql/data 2&gt;&1 | tee /tmp/mysqld.log | grep password | awk '{print $NF}' &gt; /tmp/mysql_temp_password.txt
+#7.设置ssl加密传输连接
+bin/mysql_ssl_rsa_setup --datadir=/export/server/mysql/data &&gt; /dev/null
+#8.设置my.cnf与mysqld.service文件
+echo "正在设置my.cnf与mysqld.service文件..."
+cat &gt; /etc/my.cnf &lt;&lt;EOF
+[mysqld]
+port=3306
+basedir=/export/server/mysql
+datadir=/export/server/mysql/data
+socket=/tmp/mysql.sock
+character_set_server=utf8
+collation-server=utf8_unicode_ci
+EOF
+
+cat &gt; /etc/systemd/system/mysqld.service &lt;&lt;EOF
+[Unit]
+Description=MySQL Server
+After=network.target
+
+[Service]
+User=mysql
+Group=mysql
+Type=forking
+
+# MySQL 执行命令及路径
+ExecStart=/export/server/mysql/bin/mysqld --daemonize --pid-file=/export/server/mysql/data/mysqld.pid
+ExecStop=/export/server/mysql/bin/mysqladmin --defaults-file=/export/server/mysql/my.cnf shutdown
+
+# Ensure MySQL has sufficient time to start up
+TimeoutSec=600
+
+# PID 文件路径
+PIDFile=/export/server/mysql/data/mysqld.pid
+
+# Enable these options to auto-restart the service if it crashes
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+#9.刷新后台服务，然后启动mysqld
+echo "正在刷新后台服务，然后启动mysqld..."
+systemctl daemon-reload
+systemctl start mysqld
+systemctl enable mysqld
+#10.重置mysql管理员密码为123456
+echo "正在重置mysql管理员密码..."
+cd /export/server/mysql
+temp_password=`cat /tmp/mysql_temp_password.txt`
+bin/mysqladmin -uroot password '123456' -p$temp_password
+#11.把mysql的bin目录添加到环境变量中
+echo 'export PATH=$PATH:/export/server/mysql/bin' &gt;&gt; /etc/profile
+source /etc/profile
+#12.解决mysql客户端首次无法登录问题
+[ ! -f /lib64/libncurses.so.5 ] && ln -s /lib64/libncurses.so.6 /lib64/libncurses.so.5
+[ ! -f /lib64/libtinfo.so.5 ] && ln -s /lib64/libtinfo.so.6 /lib64/libtinfo.so.5
+#13.弹出提示，MySQL安装成功
+echo "MySQL安装成功，软件安装路径：/export/server/mysql，数据库初始密码：123456！"</code></pre>
             ]]>
         </content>
     </entry>

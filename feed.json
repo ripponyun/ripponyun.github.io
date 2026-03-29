@@ -25,6 +25,21 @@
             "date_modified": "2026-03-13T12:02:36+08:00"
         },
         {
+            "id": "https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html",
+            "url": "https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html",
+            "title": "Centos Stream 9 MySQL8安装与配置",
+            "summary": "本次采用二进制安装： 前置准备： IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口） 官网下载地址：https://dev.mysql.com/downloads/mysql/ 选择合适的，下载后上传至家目录即可 Shell脚本： #!/bin/bash #1.安装依赖软件 echo \"正在安装依赖软件...\"&hellip;",
+            "content_html": "\n  <p>\n    本次采用二进制安装：\n<br>前置准备：\n<br>IP配置，主机名符合FQDN规范，关闭防火墙，SELinux（安装环境之前需要关闭，安装后再启动，配置防火墙规则，释放3306端口）\n<br>\n<br>官网下载地址：https://dev.mysql.com/downloads/mysql/  选择合适的，下载后上传至家目录即可<br>Shell脚本：\n  </p>\n<pre class=\"line-numbers  language-powershell\"><code>#!/bin/bash\n#1.安装依赖软件\necho \"正在安装依赖软件...\"\nyum -y install libaio &&gt; /dev/null\nif [ $? -ne 0 ];then\n    echo \"libaio安装失败\"\n    exit 1\nfi\n#2.判断是否有压缩包，如果有，则执行解压缩操作\necho \"正在判断是否有压缩包，如果有进行解压缩操作...\"\necho \"正在判断是否有压缩包，如果有进行解压缩操作...\"\nif [ -f mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz ]; then     #具体以下载的包名为准进行替换\n    tar -xf mysql-8.0.40-linux-glibc2.17-x86_64.tar.xz\n    ls -l mysql-8.0.40-linux-glibc2.17-x86_64\nfi\n#3.判断系统中是否安装过mariadb软件，如果有对其进行卸载操作\necho \"正在判断系统中是否安装过mariadb软件，如果有对其进行卸载操作...\"\nrpm -qa | grep mariadb | xargs -r dnf remove -y\n[ -f /etc/my.cnf ] && rm -rf /etc/my.cnf\n#4.创建mysql系统账号\nid mysql &&gt; /dev/null\n[ $? -ne 0 ] && useradd -r -s /sbin/nologin mysql\n#5.创建/export/server目录，然后移动mysql压缩包解压后的文件到/export/server目录下\nrm -rf /export/server\nmkdir -p /export/server\nmv mysql-8.0.40-linux-glibc2.17-x86_64 /export/server/mysql\n#6.进入mysql目录，对其进行初始化操作\necho \"正在进入mysql目录，对其进行初始化操作...\"\ncd /export/server/mysql\nbin/mysqld --initialize --user=mysql --basedir=/export/server/mysql --datadir=/export/server/mysql/data 2&gt;&1 | tee /tmp/mysqld.log | grep password | awk '{print $NF}' &gt; /tmp/mysql_temp_password.txt\n#7.设置ssl加密传输连接\nbin/mysql_ssl_rsa_setup --datadir=/export/server/mysql/data &&gt; /dev/null\n#8.设置my.cnf与mysqld.service文件\necho \"正在设置my.cnf与mysqld.service文件...\"\ncat &gt; /etc/my.cnf &lt;&lt;EOF\n[mysqld]\nport=3306\nbasedir=/export/server/mysql\ndatadir=/export/server/mysql/data\nsocket=/tmp/mysql.sock\ncharacter_set_server=utf8\ncollation-server=utf8_unicode_ci\nEOF\n\ncat &gt; /etc/systemd/system/mysqld.service &lt;&lt;EOF\n[Unit]\nDescription=MySQL Server\nAfter=network.target\n\n[Service]\nUser=mysql\nGroup=mysql\nType=forking\n\n# MySQL 执行命令及路径\nExecStart=/export/server/mysql/bin/mysqld --daemonize --pid-file=/export/server/mysql/data/mysqld.pid\nExecStop=/export/server/mysql/bin/mysqladmin --defaults-file=/export/server/mysql/my.cnf shutdown\n\n# Ensure MySQL has sufficient time to start up\nTimeoutSec=600\n\n# PID 文件路径\nPIDFile=/export/server/mysql/data/mysqld.pid\n\n# Enable these options to auto-restart the service if it crashes\nRestart=on-failure\nRestartSec=5\n\n[Install]\nWantedBy=multi-user.target\nEOF\n#9.刷新后台服务，然后启动mysqld\necho \"正在刷新后台服务，然后启动mysqld...\"\nsystemctl daemon-reload\nsystemctl start mysqld\nsystemctl enable mysqld\n#10.重置mysql管理员密码为123456\necho \"正在重置mysql管理员密码...\"\ncd /export/server/mysql\ntemp_password=`cat /tmp/mysql_temp_password.txt`\nbin/mysqladmin -uroot password '123456' -p$temp_password\n#11.把mysql的bin目录添加到环境变量中\necho 'export PATH=$PATH:/export/server/mysql/bin' &gt;&gt; /etc/profile\nsource /etc/profile\n#12.解决mysql客户端首次无法登录问题\n[ ! -f /lib64/libncurses.so.5 ] && ln -s /lib64/libncurses.so.6 /lib64/libncurses.so.5\n[ ! -f /lib64/libtinfo.so.5 ] && ln -s /lib64/libtinfo.so.6 /lib64/libtinfo.so.5\n#13.弹出提示，MySQL安装成功\necho \"MySQL安装成功，软件安装路径：/export/server/mysql，数据库初始密码：123456！\"</code></pre>",
+            "author": {
+                "name": "Rippon Gao"
+            },
+            "tags": [
+                   "文章"
+            ],
+            "date_published": "2025-10-28T17:36:00+08:00",
+            "date_modified": "2026-03-29T17:36:41+08:00"
+        },
+        {
             "id": "https://ripponyun.github.io/wiresharkzhua-bao-xin-shou-shi-yong-jiao-cheng.html",
             "url": "https://ripponyun.github.io/wiresharkzhua-bao-xin-shou-shi-yong-jiao-cheng.html",
             "title": "wireshark抓包新手使用教程",
@@ -37,7 +52,7 @@
                    "文章"
             ],
             "date_published": "2025-10-10T16:17:00+08:00",
-            "date_modified": "2026-03-14T16:35:47+08:00"
+            "date_modified": "2026-03-14T16:36:28+08:00"
         },
         {
             "id": "https://ripponyun.github.io/yi-ge-zhi-de-shou-cang-de-wang-zhan.html",
