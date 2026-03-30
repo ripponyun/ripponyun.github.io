@@ -1,0 +1,842 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MySQ数据服务管理 之SQL语句及实例 - Rippon&amp;小屋</title><meta name="description" content="1、SQL语句概述 结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范，是数据库认识的语句。不同的数据库生产厂商都支持SQL语句，但都有特有内容。 2、SQL语句分类（记住） ☆ DDL 数据定义语言：简称DDL(Data Definition Language)&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><meta name="theme-color" content="#17181E" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#D73A42" media="(prefers-color-scheme: light)"><meta name="msapplication-navbutton-color" content="#D73A42"><meta name="apple-mobile-web-app-status-bar-style" content="#D73A42"><link rel="canonical" href="https://ripponyun.github.io/mysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html"><link rel="alternate" type="application/atom+xml" href="https://ripponyun.github.io/feed.xml" title="Rippon&amp;小屋 - RSS"><link rel="alternate" type="application/json" href="https://ripponyun.github.io/feed.json" title="Rippon&amp;小屋 - JSON"><meta property="og:title" content="MySQ数据服务管理 之SQL语句及实例"><meta property="og:site_name" content="Rippon&小屋"><meta property="og:description" content="1、SQL语句概述 结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范，是数据库认识的语句。不同的数据库生产厂商都支持SQL语句，但都有特有内容。 2、SQL语句分类（记住） ☆ DDL 数据定义语言：简称DDL(Data Definition Language)&hellip;"><meta property="og:url" content="https://ripponyun.github.io/mysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://ripponyun.github.io/media/website/1.png" type="image/x-icon"><link rel="stylesheet" href="https://ripponyun.github.io/assets/css/style.css?v=ea2b6619bc9d54c80ba5f19344dfb433"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://ripponyun.github.io/mysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html"},"headline":"MySQ数据服务管理 之SQL语句及实例","datePublished":"2025-10-29T23:07+08:00","dateModified":"2026-03-30T23:10+08:00","description":"1、SQL语句概述 结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范，是数据库认识的语句。不同的数据库生产厂商都支持SQL语句，但都有特有内容。 2、SQL语句分类（记住） ☆ DDL 数据定义语言：简称DDL(Data Definition Language)&hellip;","author":{"@type":"Person","name":"Rippon Gao","url":"https://ripponyun.github.io/authors/rippon-gao/"},"publisher":{"@type":"Organization","name":"Rippon Gao"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><header class="top js-header"><a class="logo" href="https://ripponyun.github.io/">Rippon&amp;小屋</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://ripponyun.github.io/" title="home" target="_self">首页</a></li><li><a href="https://ripponyun.github.io/tags/wen-zhang/" title="article" target="_self">文章</a></li><li><a href="https://ripponyun.github.io/tags/yin-le/" title="music" target="_self">音乐</a></li><li><a href="https://ripponyun.github.io/tags/ruan-jian/" title="information" target="_self">宝藏屋</a></li><li><a href="https://ripponyun.github.io/bi-zhi-2.html" title="wallpaper" target="_self">壁纸</a></li></ul></nav></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content hero__content--centered"><div class="wrapper"><h1>MySQ数据服务管理 之SQL语句及实例</h1><div class="feed__meta content__meta content__meta--centered"><a href="https://ripponyun.github.io/authors/rippon-gao/" class="feed__author">Rippon Gao</a> <time datetime="2025-10-29T23:07" class="feed__date">十月 29, 2025</time></div></div></header></div><div class="entry-wrapper content__entry"><p>1、SQL语句概述<br>结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范，是数据库认识的语句。不同的数据库生产厂商都支持SQL语句，但都有特有内容。</p><p>2、SQL语句分类（记住）<br>☆ DDL<br>数据定义语言：简称DDL(Data Definition Language)<br>用来定义数据库对象：数据库，表，列等。<br>关键字：create，alter，drop等<br>搭建数据存储的框架，如管理数据库、管理数据表、管理字段<br>☆ DML<br>数据操作语言：简称DML(Data Manipulation Language)<br>用来对数据库中表的记录进行更新（增加、修改、删除）。<br>关键字：insert，delete，update等<br>☆ DQL<br>数据查询语言：简称DQL(Data Query Language)<br>用来查询数据库中表的记录（查询）。<br>关键字：select，from，where等<br>☆ DCL<br>数据控制语言：简称DCL(Data Control Language)<br>用来定义数据库的访问权限和安全级别及创建用户（账号管理、权限管理）。</p><p>3.实例练习</p><pre class="line-numbers language-sql"><code>#  单行注释
+-- 单行注释，注意：--后面有一个空格
+/*
+   ...
+   多行注释
+   ...
+ */
+
+
+-- 一、DDL数据库管理操作
+-- 1. 查看所有数据库
+show databases;
+-- 2. 创建数据库 =&gt; db_itcast
+-- 2.1 创建一个普通数据库
+create database db_itcast;
+-- 2.2 创建数据库的同时设置编码为utf8
+create database db_itheima default charset = utf8;
+-- 2.3 创建一个带有if判断的数据库
+create database if not exists db_itheima default charset = utf8;
+show databases;
+-- 3. 删除db_itcast数据库（慎重）
+drop database db_itcast;
+show databases;
+-- 4. 选择数据库
+use db_itheima;
+-- 5. 查看当前所在数据库
+select database();
+
+-- 二、DDL数据表操作
+-- 1. 选择数据库
+use db_itheima;
+-- 2. 创建数据表students =&gt; 整数类型用int、小数类型用decimal，字符串类型用varchar，多选一类型用enum
+create table students
+(
+    id     int,
+    name   varchar(20),
+    age    int,
+    gender enum ('男','女')
+) engine = innodb
+  default character set utf8;
+show tables;
+-- 2.1 案例：创建一个admin管理员表，拥有3个字段（编号、用户名称、用户密码）
+create table admin
+(
+    id       tinyint,
+    name     varchar(20),
+    password char(32)
+) engine innodb
+  default charset = utf8;
+show tables;
+-- 2.2 案例：创建一个article文章表，拥有4个字段（编号、标题、作者、内容）
+-- text文本类型，存储超大长度文本（varchar受到utf8影响，最大可以存储2万多个汉字）
+create table article
+(
+    id      tinyint,
+    title   varchar(50),
+    author  varchar(20),
+    content text
+) engine innodb
+  default character set utf8;
+show tables;
+-- 3. 查看数据表
+-- 3.1 查看数据表的表结构
+desc admin;
+describe article;
+-- 3.2 查看数据库中数据表的所有信息
+show tables;
+-- 4. 删除表
+drop table admin;
+-- 5. 修改数据表 =&gt; 修改字段（添加、修改、删除）、修改表名
+-- 5.1 修改字段
+-- 5.1.1 添加字段：给article文章表添加一个addtime字段，要求时间格式为年-月-日
+alter table article
+    add addtime time first;
+describe article;
+alter table admin
+    add changetime datetime after password;
+desc admin;
+-- 5.1.2 修改字段
+-- 案例1：字段名称修改，把admin表中name字段更为username，字段类型修改为varchar(40)
+alter table admin
+    change name username varchar(40);
+desc admin;
+-- 案例2：只修改tadmin中username字段的类型为varchar(20)
+alter table admin
+    modify username varchar(20);
+-- 5.1.3 删除字段
+-- 案例：删除article表中的addtime字段
+alter table article
+    drop addtime;
+desc article;
+-- 5.2 修改表名称
+-- 把admin数据表名称更改为tb_admin
+rename table admin to tb_admin;
+show tables;
+
+
+
+-- 扩展：查看数据库与数据表对应的编码格式
+-- utf8 == utf8mb3（上一代版本）
+-- utf8mb4（近两年更新版本）
+# 查看数据库对应的编码格式
+show create database db_itheima;
+# 查看数据表对应的编码格式
+show create table tb_admin;
+
+
+-- 三、字段类型详解
+-- 1、整数类型，创建一个学生表tb_student
+create table tb_student
+(
+    id   int,
+    name varchar(20),
+    age  tinyint unsigned
+) default character set utf8;
+show tables;
+-- 2、浮点类型，小数情况，创建一个tb_product
+create table tb_product
+(
+    id    int,
+    name  varchar(20),
+    price decimal(11, 2)
+) default charset = utf8;
+-- 3、日期时间类型，根据格式选择
+-- id、title、addtime =&gt; 年-月-日 小时:分钟:秒数
+create table tb_news
+(
+    id      int,
+    title   varchar(100),
+    addtime datetime
+) default character set utf8;
+-- 4、字符串（文本类型）
+drop table tb_student;
+create table tb_student
+(
+    id     int,
+    name   varchar(20),
+    gender enum ('male', 'female'),
+    mobile char(11),
+    remark varchar(255)
+) default charset = utf8;
+
+-- 四、字段约束详解（重点）
+-- 1、主键约束 =&gt; primary key
+-- 小结：非空、唯一、有且仅有1个
+drop table tb_news;
+show tables;
+create table tb_news
+(
+    id      int primary key,
+    title   varchar(80),
+    content text,
+    addtime datetime
+) default character set utf8;
+desc tb_news;
+
+insert into tb_news
+values (1, '新闻1', '新闻内容1', '2025-04-23 11:54:00');
+insert into tb_news
+values (2, '新闻2', '新闻内容2', '2025-04-23 11:54:30');
+
+-- 2、唯一约束 =&gt; unique
+-- 小结：和主键约束一样都是唯一的，可以为空，而且一个表中允许有多个唯一约束！
+-- 案例：创建一个用户表，id主键，name，age，code（身份证号码，要求唯一）
+create table user
+(
+    id   int primary key,
+    name varchar(20),
+    age  tinyint unsigned,
+    code char(18) unique
+) default character set utf8;
+desc user;
+describe user;
+-- 插入数据
+insert into user
+values (1, 'tom', 18, '123456789');
+-- 插入重复数据（错误演示）
+insert into user value (2, 'jane', 22, '123456789');
+-- 插入数据，但是唯一列为null
+insert into user value (2, 'jj', 21, null);
+
+-- 3. 非空约束
+-- 案例：创建一个商品表goods，有id主键，name商品名称，price商品价格，name和price都必须为非空！
+create table goods
+(
+    id    int primary key,
+    name  varchar(80)    not null,
+    price decimal(11, 2) not null
+) default charset = utf8;
+show tables;
+describe goods;
+-- 插入数据
+insert into goods
+values (1, 'Python从入门到放弃', 99.99);
+-- 插入数据（错误演示）
+insert into goods
+values (2, null, null);
+
+-- 4. 默认值约束
+-- 案例：创建一个用户表users，id主键、name用户名、age年龄、gender性别，要求gender默认值为male
+drop table user;
+show tables;
+create table users
+(
+    id     int primary key,
+    name   varchar(20) not null,
+    age    tinyint unsigned,
+    gender enum ('male','female') default 'male'
+) default character set utf8;
+-- 插入数据
+insert into users
+values (1, '张三', 18, 'male');
+-- 插入数据（触发默认值）
+insert into users(id, name, age)
+values (2, '李四', 18);
+insert into users
+values (3, '王五', 18, default);
+-- 插入数据（不使用默认值）
+insert into users
+values (4, '赵六', 18, 'female');
+
+-- 扩展：auto_increment自动增长
+drop table users;
+create table users
+(
+    id     int auto_increment primary key,
+    name   varchar(20),
+    age    tinyint unsigned,
+    gender enum ('male', 'female') default 'male'
+) default charset = utf8mb4;
+
+insert into users
+values (null, '张三', 23, 'male');
+insert into users
+values (null, '李四', 24, 'male');
+delete
+from users
+where id = 2;
+insert into users
+values (null, '王五', 25, 'male');
+
+
+
+-- 五、DML数据操纵语言 insert插入、update更新、delete删除
+-- 准备一个数据表
+use db_itheima;
+create table tb_user
+(
+    id      int auto_increment,
+    name    varchar(20),
+    age     tinyint unsigned,
+    gender  enum ('male','female'),
+    address varchar(255),
+    primary key (id)
+) default charset = utf8;
+-- 1. insert插入数据
+insert into tb_user value (1, '刘备', 34, 'male', '广州市天河区');
+insert into tb_user(id, name, age)
+values (null, 'tom', 18);
+insert into tb_user(id, name, age)
+values (null, '张三', 23),
+       (null, '李四', 24);
+-- 查询表中的所有数据
+select *
+from tb_user;
+
+-- 2. update修改数据
+-- update tb_user set address='广东省深圳市' where 字段='指定值';
+update tb_user
+set address='广东省深圳市'
+where id = 1;
+-- 今年2025年，明年2026年，假设已经到了2026年，所有人员年龄都要+1
+update tb_user
+set age=age + 1;
+-- 3. 删除与清空操作
+-- delete from 删除满足条件的结果
+delete
+from tb_user
+where id = 3;
+delete
+from tb_user
+where age = 19;
+-- 清空数据表（慎重）
+delete
+from tb_user;
+truncate tb_user;
+select *
+from tb_user;
+/*
+ - delete：删除数据记录
+  - 数据操作语言（DML）
+  - 删除大量记录速度慢，只删除数据，主键自增序列不清零，1-100 =&gt; 新插入 =&gt; 101
+  - 可以带条件删除
+- truncate：删除所有数据记录
+  - 数据定义语言（DDL）
+  - 清里大量数据速度快，主键自增序列清零, 1-100 =&gt; 新插入 =&gt; 1
+  - 不能带条件删除
+ */
+
+-- 六、DQL数据查询语言
+-- 准备数据集
+create table product
+(
+    pid         int primary key,
+    pname       varchar(20),
+    price       double,
+    category_id varchar(32)
+) default charset = utf8;
+
+insert into product
+values (1, '联想', 5000, 'c001'),
+       (2, '海尔', 3000, 'c001'),
+       (3, '雷神', 5000, 'c001'),
+       (4, '杰克琼斯', 800, 'c002'),
+       (5, '真维斯', 200, 'c002'),
+       (6, '花花公子', 440, 'c002'),
+       (7, '劲霸', 2000, 'c002'),
+       (8, '香奈儿', 800, 'c003'),
+       (9, '相宜本草', 200, 'c003'),
+       (10, '面霸', 5, 'c003'),
+       (11, '好想你枣', 56, 'c004'),
+       (12, '香飘飘奶茶', 1, 'c005'),
+       (13, '海澜之家', 1, 'c002');
+
+-- 1. select简单查询
+# 案例：查询所有的商品.
+-- *代表所有列
+select *
+from product;
+
+# 案例：查询商品名和商品价格.
+select pname,price from product;
+# 案例：查询结果是表达式（运算查询）：将所有商品的价格+10元进行显示.
+select pname,price+10 from product;
+# 案例：针对指定列进行去重操作，查询所有产品对应的产品类别
+select distinct category_id from product;
+
+-- 2. where子句：比较运算符
+# 查询商品名称为“花花公子”的商品所有信息：
+select * from product where pname='花花公子';
+# 查询价格为800商品
+select * from product where price=800;
+# 查询价格不是800的所有商品
+select * from product where price !=800;
+# 查询商品价格大于60元的所有商品信息
+select * from product where price &gt;60;
+# 查询商品价格小于等于800元的所有商品信息
+select * from product where price &lt;800;
+
+-- 3. where子句：范围查询
+# 查询商品价格在200到1000之间所有商品（连续范围，如200-1000）
+select * from product where price between 200 and 1000;
+# 查询商品价格是200或800的所有商品（非连续，如200或800）
+select * from product where price in(200,800);
+
+-- 4. where子句：逻辑查询，and、or、not
+# 查询商品价格在200到1000之间所有商品
+select * from product where price&gt;=200 and price&lt;=1000;
+# 查询商品价格是200或800的所有商品
+select * from product where price=200 or price=800;
+# 查询价格不是800的所有商品
+select * from product where not(price=800);
+
+-- 5. where子句：like模糊查询，%任意个任意字符，_任意某个字符
+# 查询以'香'开头的所有商品
+select * from product where pname like '香%';
+# 查询包含'香'字的所有商品
+select * from product where pname like  '%香%';
+# 查询第二个字为'想'的所有商品
+select * from product where pname like  '_想%';
+
+-- 6. 非空查询
+
+# 查询没有分类的商品，category_id列为空的商品
+select * from product where category_id is null ;
+# 查询有分类的商品
+select * from product where category_id is not null ;
+########################################################
+-- 聚合查询
+-- 1. select默认横向查询（select语句默认一行一行查询）
+use db_itheima;
+-- student表，字段有编号、学号、姓名、语文成绩、英语成绩、数学成绩等
+create table student(
+    id int primary key,
+    num char(11),
+    name varchar(20),
+    chinese tinyint,
+    english tinyint,
+    math tinyint
+) default charset=utf8;
+insert into student values
+(1, '20210908001','张王明', 89, 78, 90),
+(2, '20210908002', '李进', 67, 53, 95),
+(3, '20210908003', '王俊', 87, 78, 77),
+(4, '20210908004', '李云云', 80, 98, 92),
+(5, '20210908005', '谢来财', 82, 84, 67),
+(6, '20210908006', '张进宝', 55, 85, 89),
+(7, '20210908007', '黄蓉儿', 79, 86, 90),
+(8, '20210908008', '刘小雪', 71, 90, 91),
+(9, '20210908009', '夏金章', 89, 91, 96),
+(10, '20210908010', '杨洋', 83, 65, 90);
+select * from student;
+-- 案例：查询所有学生的姓名和总成绩（三个科目加和）
+select name,(chinese+english+math) as score from student;
+select name,(chinese+english+math) score from student;
+-- 案例：查询所有学生的姓名和平均成绩（三个科目加和 / 3）
+select name,(chinese+english+math)/3 as avg_score from student;
+-- 需求：求班级所有学生语文/数学/英语平均成绩？答：需要用到聚合查询
+select avg(chinese) as chinese_avgscore from student;
+select avg(english) as english_avgscore from student;
+select avg(math)    as math_avgscore from student;
+-- count()：返回表中总行数，也可以是某一列一共有多少行
+-- sum()：针对某一列进行求和运算
+-- avg()：针对某一列进行求平均值
+-- max()：针对某一列求最大值
+-- min()：针对某一列求最小值
+# 1、查询商品的总数量
+select * from product;
+select count(pid) from product;
+# 2、查询价格大于200商品的总条数 =&gt; 先where，然后group by，最后是聚合操作
+select count(price) from product where price&gt;200 ;
+# 3、查询分类为'c001'的所有商品的总和
+select sum(price) from product where category_id='c001';
+# 4、查询分类为'c002'所有商品的平均价格
+select avg(price) from product where category_id='c002';
+# 5、查询商品的最大价格和最小价格
+select max(price),min(price) from product;
+
+-- group by分组
+-- 基本语法：
+select distinct category_id from product;
+select category_id from product group by category_id;
+-- 准备学生表students
+drop table students;
+create table students(
+    id int auto_increment,
+    name varchar(20),
+    age tinyint unsigned,
+    gender enum('male', 'female'),
+    score tinyint,
+    primary key(id)
+) default charset=utf8;
+insert into students values (null, 'Tom', 23, 'male', 97);
+insert into students values (null, 'Jack', 24, 'male', 88);
+insert into students values (null, 'Rose', 26, 'female', 99);
+insert into students values (null, 'Eric', 27, 'male', 59);
+insert into students values (null, 'Jennifer', 22, 'female', 76);
+describe students;
+-- 按照性别进行分组操作
+select gender from students group by gender;
+-- 按照多个字段（name，gender）进行分组操作
+-- 工作原理：就是先把两个字段组合成一个整体，然后进行分组操作
+-- Tom+male/Jack+male/Rose+female组...
+select name,gender from students group by gender, name;
+-- group by + 聚合函数
+-- 案例1：学生表中，求解男同学有多少人，女同学有多少人
+-- 男女分离 =&gt; group by，针对每一个分组求组内总人数 =&gt; count()
+select gender, count(gender) from students group by gender;
+-- 案例2：统计不同性别的人的平均年龄，男：平均年龄，女：平均年龄
+select gender,avg(age) from students group by gender;
+
+#####################################################################
+-- having子句
+-- 第一种情况：没有group by情况下，having可以直接替代where子句
+select * from product where price &gt; 800;
+select * from product having price &gt; 800;
+-- 第二种情况：有group by情况下，注意 =&gt; where发生在分组之前，having发送在分组之后，如果相对分组后的结果进一步过滤，只能使用having
+-- 案例：students表中，根据gender字段进行分组，统计分组条数大于2的
+select gender,count(*) from students group by gender having count(*)&gt;2;
+#1 统计各个分类商品的个数
+select category_id,count(*) from product group by category_id ;
+#2 统计各个分类商品的个数,且只显示个数大于1的信息
+select category_id,count(*) from product group by category_id having count(*)&gt;1;
+#####################################################################
+-- order by子句
+-- 基本语法：order by 字段 asc或者desc
+-- 案例1：查询商品信息，按照价格进行降序排列
+select * from product;
+select * from product order by price  ;-- 默认
+select * from product order by price desc ;-- 降序
+
+-- 案例2：order by不仅可以按照某个字段排序，也可以同时按照多个字段排序，商品表按照price降序，如果价格相同，则按照category_id降序
+-- order by 字段1 desc, 字段2 desc
+-- 首先按照第一个字段排序，如果第一个字段能比较出大小，则不需要进行字段2排序；如果第一个字段值相同，则系统会继续按照第二个字段进行排序
+select * from product order by price desc ,category_id desc ;
+
+#####################################################################
+-- limit子句
+-- 基本语法1：select * from 数据表 limit 查询数量;
+-- 案例1：查询学生表中，成绩最高的学生信息（只查1个）
+select * from students order by score desc limit 1;
+select * from students order by score desc limit 0,1;
+-- 缺点说明：如果一个学生表有多个同学成绩相同，可能会导致，只能查出1名同学。
+
+-- 基本语法2：select * from 数据表 limit 偏移量(从哪查默认为0，类似索引下标)，查询数量;
+-- 案例2：查询学生表中，成绩第2高（第2名）的学生信息
+select * from students order by score desc limit 1,1;
+describe students;
+-- limit分页查询
+-- 第1页
+select  * from students limit 0,2;
+-- 第2页
+select  * from students limit 2,2;
+-- 第n页
+-- select * from students limit (当前页页码-1)*每页数量,每页数量;
+-- 第3页
+select  * from students limit 4,2;
+
+-- 七、多表连接查询（交叉连接、内连接、外连接、自连接）
+-- 准备数据集（两张数据表）
+-- 1. 准备数据集
+-- 数据表classes，拥有两个字段，cls_id代表班级编号，cls_name代表班级名称
+use db_itheima;
+drop table if exists classes;
+create table classes(
+    cls_id int,
+    cls_name varchar(20)
+) default charset=utf8mb4;
+-- 插入数据，ui、java、python
+insert into classes values
+    (1, 'UI'),
+    (2, 'Java'),
+    (3, 'Python');
+
+-- 数据表students，拥有id、name、age、gender值使用male和female、score、cls_id
+drop table  if exists  students;
+create table students(
+    id int,
+    name varchar(20),
+    age int,
+    gender enum('male', 'female'),
+    score decimal(11,2),
+    cls_id int
+) default charset=utf8mb4;
+
+-- 插入数据，刘备属于Java，貂蝉属于UI，赵云属于Python，关羽属于Python，大乔属于UI
+insert into students values
+    (1, '刘备', 18, 'male', 100.00, 2),
+    (2, '貂蝉', 18, 'female', 99.00, 1),
+    (3, '赵云', 18, 'male', 98.00, 3),
+    (4, '关羽', 18, 'male', 96.00, 3),
+    (5, '大乔', 18, 'female', 97.00, 1);
+
+-- 2. 交叉连接查询
+/*
+ 没有意义，但是它是所有连接的基础。其功能就是将表1和表2中的每一条数据进行连接。
+结果：
+字段数 = 表1字段 + 表2的字段
+记录数 = 表1中的总数量 * 表2中的总数量（笛卡尔积）
+交叉连接也称之为笛卡尔积连接
+ */
+select * from students cross join classes;
+select * from students, classes;
+
+-- 3. 内连接查询（有意义查询），把A、B两张表中满足关联条件的结果都显示出来，不满足的则忽略
+-- 案例：求每个学生所属的班级信息（学生所有字段 + 班级名称）
+select * from students inner join classes on students.cls_id = classes.cls_id;
+-- 内连接基础上可以筛选想要的字段
+select students.*,classes.cls_name from students inner join classes on students.cls_id=classes.cls_id;
+-- 引入表别名机制，数据表名称 [as] 别名
+select s.*,c.cls_name from students as s inner join classes as c on s.cls_id=c.cls_id;
+select s.name, s.age, s.gender, c.cls_name from students s inner join classes c on s.cls_id = c.cls_id;
+-- 通过换行+缩进提升可读性，inner join on还可以简写为join on
+select
+  s.name,
+  s.age,
+  s.gender,
+  c.cls_name
+from students as s
+join classes as c
+on s.cls_id = c.cls_id;
+-- 4. 左外连接查询
+-- 使用左连接查询学生表与班级表，获取每一学生对应的班级信息，要求没有对应的班级也要显示。
+insert into students values (6, '曹操', 30, 'male', 98, 9);
+select s.*,c.cls_name from students s left join classes c on s.cls_id=c.cls_id;
+-- 5. 右外连接查询
+-- 查看班级中对应的学生信息，如果某个班级没有对应的学生也要显示。（既可以用左外连接也可以用右外连接）
+select s.*,c.cls_name from students s right join classes c on s.cls_id = c.cls_id;
+select s.*,c.cls_name from classes c right join students s on c.cls_id=s.cls_id;
+-- 6. 自连接查询（扩展）
+use db_itheima;
+create table areas(
+    aid int not null AUTO_INCREMENT,
+    atitle varchar(20),
+    pid int,
+    primary key(aid)
+) default charset=utf8;
+insert into areas values (null, '广东省', null),(null, '山西省', null),(null, '深圳市', 1), (null, '广州市', 1), (null, '太原市', 2), (null, '大同市', 2);
+select *
+from areas;
+-- 案例：查询省的名称为“广东省”的所有城市（只能写一个SQL语句完成查询操作）
+-- 第一步：把两张表关联查询（内连接）
+select * from areas p inner join areas c on p.aid = c.pid;
+-- 第二步：在以上查询基础上，获取省份名称为广东省
+select * from areas p inner join areas c on p.aid = c.pid where p.atitle ='广东省' ;
+-- 第三步：只显示城市信息
+select c.* from areas p inner join areas c on p.aid=c.pid  where p.atitle = '广东省';
+
+-- 7. 总结串讲一下
+-- 7.1 内连接：只返回满足关联条件的结果
+select * from students s inner join classes c on s.cls_id = c.cls_id;
+-- 7.2 外连接（左外连接、右外连接） =&gt; 重点记住左外连接
+-- 我们出于某些原因，必须要强制某个表中的所有记录，不管是否可以关联另外一张表
+select * from students s left join classes c on s.cls_id = c.cls_id;
+-- 7.3 自连接查询（自己 查询 自己）
+select * from areas p inner join areas c on p.aid = c.pid where p.atitle = '广东省';
+
+-- 八、子查询
+-- 数据集准备
+-- 1. 准备数据集
+drop table student;
+-- 创建student学生表，包含id、name、age、gender、score
+create table student(
+    id int,
+    name varchar(20),
+    age int,
+    gender enum('male', 'female'),
+    score decimal(11,2)
+) default charset=utf8mb4;
+-- 插入7条测试数据
+insert into student values
+    (1, '张三', 18, 'male', 100.00),
+    (2, '李四', 19, 'male', 99.00),
+    (3, '王五', 20, 'male', 98.00),
+    (4, '赵六', 22, 'male', 97.00),
+    (5, '钱七', 24, 'male', 96.00),
+    (6, '孙八', 30, 'male', 95.00),
+    (7, '周九', 26, 'male', 94.00);
+
+-- 2. 案例：查询学生表中大于平均年龄的所有学生
+-- 典型的分步查询：① 必须要想知道平均年龄是多少？ ② 比较每一个学生年龄是否大于平均年龄
+-- 传统方式：
+-- ① 求平均年龄
+-- ② 比较每一个学生年龄是否大于平均年龄（按行查询，一一进行比对）
+#######################################################################
+-- 在实际应用中，如果是分步查询，则可以考虑使用子查询 =&gt; 子查询三步走
+-- 第一步：编写子查询（先求出核心点，平均值）
+select avg(age) from student;
+-- 第二步：编写主查询，填充伪代码
+select * from student where age &gt;22.7143;
+-- 第三步：把伪代码替换为子查询
+select * from student where age &gt;(select avg(age) from student);
+
+-- 3. 案例：查询goods产品表中具有分类信息的产品
+-- 准备数据集
+create table category(
+    cid int,
+    cname varchar(20)
+) default charset=utf8mb4;
+insert into category values
+    (1, '手机'),
+    (2, '电脑'),
+    (3, '图书');
+
+drop table if exists goods;
+create table goods(
+    id int,
+    name varchar(20),
+    price decimal(11,2),
+    cid int
+) default charset=utf8mb4;
+insert into goods values
+    (1, '华为手机', 5000.00, 1),
+    (2, '小米手机', 3000.00, 1),
+    (3, '苹果手机', 10000.00, 1),
+    (4, '华硕电脑', 12000.00, 2),
+    (5, '戴尔电脑', 11000.00, 2),
+    (6, 'Surface电脑', 13000.00, 2),
+    (7, 'Java从入门到放弃',100.00, 3),
+    (8, 'HP激光打印机',999.00, 9);
+
+-- 查询goods产品表中具有分类信息的产品
+-- ① 先查询已知的商品分类编号（到底有哪些） ② 再次查询商品表，判断每一个商品对应的cid是否出现在已知分类中
+-- 第一步：编写子查询（获取已知商品分类编号）
+select cid from category;
+-- 第二步：编写主查询（查询商品表，判断每一个商品对应的cid是否出现在已知分类中）
+select * from goods where cid in (已知商品分类编号);
+-- 第三步：把伪代码替换为子查询
+select * from goods where goods.cid in  (select cid from category);
+-- 注意：虽然子查询也能实现内连接查询效果，但是推荐使用内连接，效率更高。
+#使用内连接
+select g.*,c.cname from goods g inner join category c on g.cid=c.cid;
+-- 4. 案例：查询年龄最小且成绩最高的学生信息
+select * from student;
+-- 第一步：编写子查询，年龄最小是多少，成绩最高是多少？
+select min(age) from student;
+select max(score) from student;
+select min(age), max(score) from student;
+-- 第二步：编写主查询 + 伪代码
+-- 第三步：伪代码替换为子查询
+select * from student where (age ,score)=(select min(age),max(score) from student);
+select * from student where age = (select min(age) from student) and score = (select max(score) from student);
+
+-- 九、DCL用户控制语言，控制用户 和 用户权限
+-- 1. 创建和查看账号信息
+# 创建用户设置密码
+# create user 'user'@'host' identified by 'password';
+# select user,host from mysql.user;
+# 'user'@'localhost'                     表示user只能在本地通过socket登录数据库
+# 'user'@'192.168.0.1'                   表示user用户只能在IP登录数据库
+# 'user'@'192.168.0.0/24'                表示user用户可以在该网络任意的主机登录数据库
+# 'user'@'%'                             表示user用户可以在所有的机器上登录数据库;本机为匿名用户
+create user 'tom'@'localhost' identified by '123456';
+create user 'james'@'192.168.88.131' identified by '123456';
+create user 'java'@'%' identified by '123456';
+select user,host from mysql.user;
+-- 2. 修改账号信息，如密码
+alter user 'java'@'%' identified by 'java';
+#  重命名用户名
+rename user 'james'@'192.168.88.131' to 'jay'@'192.168.0/24';
+-- 3. 移除账号
+drop user 'java'@'%';
+drop user 'tom'@'localhost';
+drop user  'jay'@'192.168.0/24';
+select user,host from mysql.user;
+
+
+-- 4. 创建账号同时分配权限 =&gt; 'root'@'%'
+create user 'admin'@'%' identified by '123456';
+grant all on *.* to 'admin'@'%' with grant option;
+-- *.* 代表：所有数据库下面的所有数据表
+
+
+-- 5. 精细化权限管理
+
+grant select on db_itheima.* to 'tom'@'localhost';
+grant update(id) on db_itheima.student to 'tom'@'localhost';
+-- 6. revoke回收权限
+revoke update on  db_itheima.student from 'tom'@'localhost';
+revoke select on db_itheima.* from 'tom'@'localhost';
+show grants for 'tom'@'localhost';
+
+
+-- 十、MySQL底层架构
+-- 1、数据存储引擎
+show engines;
+-- 2、记住InnoDB、MyISAM以及Memory
+use db_itheima;
+create table member(
+    id int primary key,
+    name varchar(20),
+    age tinyint unsigned,
+    gender enum('male', 'female')
+) engine=InnoDB default charset=utf8;
+-- 3、查询数据表引擎
+show create table member;
+
+
+
+use db_itheima;
+-- 十一、SQL监控与查询优化
+-- 1、准备慢日志查询测试数据
+CREATE TABLE simple_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+);
+drop table simple_table;
+-- 删除存储过程
+DROP PROCEDURE InsertData;
+-- 创建存储过程
+DELIMITER //
+CREATE PROCEDURE InsertData()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    START TRANSACTION;
+    WHILE i &lt;= 5000000 DO
+        INSERT INTO simple_table (name, age)
+        VALUES (CONCAT('User', i), FLOOR(18 + (RAND() * 42)));
+        SET i = i + 1;
+    END WHILE;
+    COMMIT;
+END //
+DELIMITER ;
+
+-- 调用存储过程
+CALL InsertData();
+select count(*) from simple_table;
+-- 2、主键约束 == 主键索引（相当于给id这一列添加了索引）=&gt; 字典产生了一个目录
+select * from simple_table where id = 1990000;
+
+-- 3、删除自动增长与主键索引
+alter table simple_table change id id int;
+alter table simple_table drop primary key;
+desc simple_table;
+
+-- 4. 索引有很多种：主键索引、唯一索引、普通索引、前缀索引、联合索引
+-- primary key主键索引
+desc student;
+alter table student add primary key(id);
+-- unique唯一索引
+-- key/index普通索引
+-- create index 索引名称 on 数据表(字段);
+create index student_name_index on student(name);
+desc student;
+-- 前缀索引：就是一个字段，不需要所有值，只需要把字符值前几个字符取出就能实现数据区分
+-- 联合索引：可以针对多个字段简历索引 on 数据表(字段1,字段2)
+
+-- 案例：根据慢查询日志中的SQL使用explain执行计划分析为什么执行缓慢？
+explain select * from simple_table where id = 1990000;
+alter table simple_table add primary key(id);
+desc simple_table;
+
+select * from student where age between 18 and 20;
+
+create database db_test;
+
+# 使用SHOW PROFILES查看查询的详细耗时（重点）
+
+SET profiling = 1;                                         -- 开启性能分析（开关）
+alter table simple_table change id id int;
+alter table simple_table drop primary key;
+select * from simple_table where id = 1990000;
+
+SHOW PROFILES;                                             -- 查看所有SQL的执行情况
+SHOW PROFILE FOR QUERY 1;                                  -- 查看第一个查询的详细耗时
+</code></pre></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on 三月 30, 2026</p><div class="content__actions"><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fripponyun.github.io%2Fmysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html" class="js-share facebook" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fripponyun.github.io%2Fmysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html&amp;media=undefined&amp;description=MySQ%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%20%E4%B9%8BSQL%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%AE%9E%E4%BE%8B" class="js-share pinterest" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#pinterest"/></svg> <span>Pinterest</span> </a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fripponyun.github.io%2Fmysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span> </a><a href="https://api.whatsapp.com/send?text=MySQ%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%20%E4%B9%8BSQL%E8%AF%AD%E5%8F%A5%E5%8F%8A%E5%AE%9E%E4%BE%8B https%3A%2F%2Fripponyun.github.io%2Fmysqshu-ju-fu-wu-guan-li-zhi-sqlyu-ju-ji-shi-li.html" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://ripponyun.github.io/authors/rippon-gao/" rel="author">Rippon Gao</a></h3></div></div></div><nav class="content__nav"><div class="wrapper"><div class="content__nav-inner"><div class="content__nav-prev"><a href="https://ripponyun.github.io/centos-stream-9-mysql8an-zhuang-yu-pei-zhi.html" class="content__nav-link" rel="prev"><div><span>Previous</span> Centos Stream 9 MySQL8安装与配置</div></a></div><div class="content__nav-next"><a href="https://ripponyun.github.io/wise-care-365-pro-735722-zhuan-ye-ban-shi-jie-shang-zui-kuai-de-xi-tong-you-hua-ruan-jian.html" class="content__nav-link" rel="next"><div><span>Next</span> Wise Care 365 Pro 7.3.5.722 专业版 世界上最快的系统优化软件</div></a></div></div></div></nav></footer></article></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>Powered by Publii CMS</p></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://ripponyun.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://ripponyun.github.io/assets/js/scripts.min.js?v=dafec4f87fead6718cb125f0b0fc8441"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script>(function() {
+			var originalTitle = document.title;
+			var timeout;
+			document.addEventListener("visibilitychange", function() {
+				if (document.hidden) {
+					document.title = "👀 We miss you! Come back!";
+				} else {
+					clearTimeout(timeout);
+					document.title = "🎉 Welcome back!";
+							setTimeout(function() {
+								document.title = originalTitle;
+							}, 2000);
+				}
+			});
+		})();</script></body></html>
